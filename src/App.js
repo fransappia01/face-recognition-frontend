@@ -1,23 +1,33 @@
-import logo from './logo.svg';
+import React, { useState } from 'react';
+import WebcamCapture from './components/WebcamCapture';
+import PhoneCapture from './components/PhoneCapture';
+import { CssBaseline, Container } from '@mui/material';
+import { isMobile, isIOS } from 'react-device-detect';
 import './App.css';
+import Chat from './components/Chat'; // Ahora usamos Chat en lugar de QuestionInput
 
 function App() {
+  const [userInfo, setUserInfo] = useState(null); // Aquí guardarás la información del usuario detectado
+  const isIphone = isMobile && isIOS;
+
+  // Función para actualizar la información del usuario
+  const handleUserInfoUpdate = (info) => {
+    const { name, lastname, description } = info;
+    setUserInfo({
+      name,
+      lastname,
+      description
+    });
+  };
+
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <h1>Reconocimiento Facial</h1>
+      <Container>
+        <CssBaseline />
+        {isIphone ? <PhoneCapture onUserInfoUpdate={handleUserInfoUpdate} /> : <WebcamCapture onUserInfoUpdate={handleUserInfoUpdate} />}
+        {userInfo && <Chat userInfo={userInfo} />}
+      </Container>
     </div>
   );
 }

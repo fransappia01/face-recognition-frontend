@@ -1,0 +1,44 @@
+.webcam-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  
+  .capture-button {
+    background-color: #007bff;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    margin-top: 20px;
+    border-radius: 5px;
+    font-size: 16px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+  }
+  
+  .capture-button:disabled {
+    background-color: #aaa;
+    cursor: not-allowed;
+  }
+  
+  .capture-button:hover:not(:disabled) {
+    background-color: #0056b3;
+  }
+  
+  .log-container {
+    margin-top: 20px;
+    font-size: 14px;
+    color: #333;
+  }
+  
+  .message-container {
+    margin-top: 20px;
+    padding: 10px;
+    background-color: #f0f0f0;
+    border-radius: 5px;
+    width: 100%;
+    text-align: center;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+    margin-bottom: 20px;
+  }
+  
