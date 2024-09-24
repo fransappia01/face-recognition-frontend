@@ -66,7 +66,7 @@ const WebcamCapture = ({ onUserInfoUpdate }) => {
   };
 
   const sendToAI = async (userInfo) => {
-    const apiKey = 'AIzaSyDpnLxxlCgcaltHSI1nPNi9IfF1Qg2806s';
+    const apiKey = process.env.REACT_APP_API_KEY;
     const endpointUrl = `https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-flash-latest:generateContent?key=${apiKey}`;
     
     // Construir el contexto inicial para la IA
